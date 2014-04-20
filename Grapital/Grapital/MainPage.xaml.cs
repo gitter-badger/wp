@@ -215,7 +215,7 @@ namespace Grapital
                 {"lng", longitude.ToString()},
                 {"user", "kruil"}
             };
-            PostSubmitter post = new PostSubmitter() { url = "http://grapital.gopagoda.com/api.php/items/", parameters = data };
+            PostSubmitter post = new PostSubmitter() { url = "http://grapital.gopagoda.com/api.php/items", parameters = data };
             post.uploaded += new PostSubmitter.MyDel(post_uploaded);
             post.Submit();
         }

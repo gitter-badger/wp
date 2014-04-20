@@ -13,3 +13,4 @@ C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\obj\Debug\XapCacheFile.xm
 C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\Bin\Debug\Microsoft.Phone.Controls.dll
 C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\Bin\Debug\Microsoft.Phone.Controls.xml
 C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\Bin\Debug\Microsoft.Phone.Controls.Toolkit.dll
+C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\obj\Debug\Grapital.csprojResolveAssemblyReference.cache
