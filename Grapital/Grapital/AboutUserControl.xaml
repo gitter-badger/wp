@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="Grapital.AboutUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <Grid x:Name="LayoutRoot">
+        <StackPanel Margin="10">
+            <Grid Margin="14">
+                <Image HorizontalAlignment="Left" Margin="-10,0,0,0" Width="200" Source="img/grapitalText.png"/>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Bottom" Opacity="0.5" x:Name="textBlockVersion" Margin="0,0,105,6" Text="v.4.3.0.0" FontSize="30" Foreground="White"/>
+            </Grid>
+            <TextBlock Margin="14,10,14,20" Text="{Binding Path=MyWrappedResources.AboutText, Source={StaticResource AnyGivenKey}}" FontSize="26" TextWrapping="Wrap" Foreground="#EDFFFFFF"/>
+            <Button Height="90" x:Name="butFeedback" BorderThickness="0" Foreground="White" Content="{Binding Path=MyWrappedResources.Feedback, Source={StaticResource AnyGivenKey}}" Click="butFeedback_Click" Background="#68FFFFFF" />
+            <Button Margin="0,0,0,-8" Height="90" x:Name="butRate" BorderThickness="0" Background="#68FFFFFF" Foreground="White" Content="{Binding Path=MyWrappedResources.Rate, Source={StaticResource AnyGivenKey}}" Click="butRate_Click"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

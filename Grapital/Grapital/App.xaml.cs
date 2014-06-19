@@ -12,11 +12,23 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using System.Device.Location;
+using System.IO.IsolatedStorage;
+using Microsoft.Phone.Tasks;
+using System.Windows.Resources;
+using System.Threading;
 
 namespace Grapital
 {
     public partial class App : Application
     {
+
+        public double latitude, longitude = 0.0;
+        public ItemStorage itemStorage = new ItemStorage();
+        public GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
+        public IsolatedStorageSettings settings;
+        public bool newItemAdded = false;
+
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
@@ -41,7 +53,7 @@ namespace Grapital
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 // Display the current frame rate counters.
-                Application.Current.Host.Settings.EnableFrameRateCounter = true;
+                Application.Current.Host.Settings.EnableFrameRateCounter = false;
 
                 // Show the areas of the app that are being redrawn in each frame.
                 //Application.Current.Host.Settings.EnableRedrawRegions = true;
@@ -63,6 +75,27 @@ namespace Grapital
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            //Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("ru"); // включить принудительно русский
+            settings = IsolatedStorageSettings.ApplicationSettings;
+            if (!settings.Contains("email")) settings.Add("email", "");
+            if (!settings.Contains("emailInvitation")) settings.Add("emailInvitation", "");
+            if (!settings.Contains("emailCodeVerification")) settings.Add("emailCodeVerification", "");
+            if (!settings.Contains("friendVerification")) settings.Add("friendVerification", "");
+
+            watcher = new GeoCoordinateWatcher(GeoPositionAccuracy.High);  // using high accuracy 
+            watcher.MovementThreshold = 20; // use MovementThreshold to ignore noise in the signal
+            watcher.PositionChanged += new EventHandler<GeoPositionChangedEventArgs<GeoCoordinate>>(watcher_PositionChanged);
+        }
+
+        void watcher_PositionChanged(object sender, GeoPositionChangedEventArgs<GeoCoordinate> e)
+        {
+            latitude = e.Position.Location.Latitude;
+            longitude = e.Position.Location.Longitude;
+            if (e.Position.Location.HorizontalAccuracy < GV.accuracy)
+            {
+                if (itemStorage == null) itemStorage = new ItemStorage();
+                itemStorage.refreshItems();
+            }
         }
 
         // Code to execute when the application is activated (brought to foreground)
@@ -93,14 +126,36 @@ namespace Grapital
             }
         }
 
-        // Code to execute on Unhandled Exceptions
+
+
         private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
         {
+            string errorMsg = string.Format(
+                "Exception caught. Message: {0} \r\nTrace: {1}",
+                e.ExceptionObject.Message,
+                e.ExceptionObject.StackTrace);
+            SendEmailOfException(errorMsg);
+            System.Windows.MessageBox.Show("Error");
+
             if (System.Diagnostics.Debugger.IsAttached)
             {
-                // An unhandled exception has occurred; break into the debugger
+                //Произошло необработанное исключение; перейти в отладчик
                 System.Diagnostics.Debugger.Break();
             }
+
+        }
+
+
+        private static void SendEmailOfException(string msg)
+        {
+            String appVersion = System.Reflection.Assembly.GetExecutingAssembly().FullName.Split('=')[1].Split(',')[0];
+            var emailComposeTask = new EmailComposeTask
+            {
+                To = "support@mymonetal.com;",
+                Subject = "Monetal " + appVersion + ". Error",
+                Body = msg
+            };
+            emailComposeTask.Show();
         }
 
         #region Phone application initialization
@@ -116,7 +171,7 @@ namespace Grapital
 
             // Create the frame but don't set it as RootVisual yet; this allows the splash
             // screen to remain active until the application is ready to render.
-            RootFrame = new PhoneApplicationFrame();
+            RootFrame = new TransitionFrame();
             RootFrame.Navigated += CompleteInitializePhoneApplication;
 
             // Handle navigation failures

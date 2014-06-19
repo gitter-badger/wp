@@ -1,12 +1,18 @@
-﻿<xapCache source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\Bin\Debug\Grapital.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="20.04.2014 23:12:12">
-  <file source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\Bin\Debug\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="20.04.2014 13:11:15" />
-  <file source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\Background.png" archivePath="Background.png" lastWriteTime="20.04.2014 12:57:44" />
-  <file source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="20.04.2014 12:57:44" />
-  <file source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\obj\Debug\Grapital.dll" archivePath="Grapital.dll" lastWriteTime="20.04.2014 23:12:11" />
+﻿<xapCache source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\Bin\Debug\Grapital.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="17.06.2014 23:26:13">
+  <file source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\Bin\Debug\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="22.05.2014 11:59:06" />
+  <file source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="11.05.2014 20:32:55" />
+  <file source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="11.05.2014 20:32:55" />
+  <file source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\obj\Debug\Grapital.dll" archivePath="Grapital.dll" lastWriteTime="17.06.2014 23:26:13" />
+  <file source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\lib\Coding4Fun.Phone.Controls.dll" archivePath="Coding4Fun.Phone.Controls.dll" lastWriteTime="14.04.2012 11:56:36" />
+  <file source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\lib\MarkHeath.StarRating.dll" archivePath="MarkHeath.StarRating.dll" lastWriteTime="13.06.2011 21:35:18" />
   <file source="C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v7.1\Libraries\Silverlight\Microsoft.Phone.Controls.dll" archivePath="Microsoft.Phone.Controls.dll" lastWriteTime="15.09.2011 16:36:26" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v7.1\Libraries\Silverlight\Microsoft.Phone.Controls.Maps.dll" archivePath="Microsoft.Phone.Controls.Maps.dll" lastWriteTime="15.09.2011 16:36:26" />
   <file source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\lib\Microsoft.Phone.Controls.Toolkit.dll" archivePath="Microsoft.Phone.Controls.Toolkit.dll" lastWriteTime="06.10.2011 12:33:14" />
-  <file source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\SplashScreenImage.jpg" archivePath="SplashScreenImage.jpg" lastWriteTime="20.04.2014 12:57:44" />
-  <file source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="20.04.2014 18:23:13" />
-  <file source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\Bin\Debug\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="20.04.2014 12:57:44" />
-  <file source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\Bin\Debug\Background.png" archivePath="Background.png" lastWriteTime="20.04.2014 12:57:44" />
+  <file source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\lib\WriteableBitmapExWinPhone.dll" archivePath="WriteableBitmapExWinPhone.dll" lastWriteTime="02.12.2013 17:53:17" />
+  <file source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\obj\Debug\ru\Grapital.resources.dll" archivePath="ru\Grapital.resources.dll" lastWriteTime="17.06.2014 23:26:13" />
+  <file source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\Background.png" archivePath="Background.png" lastWriteTime="20.04.2014 23:44:01" />
+  <file source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\SplashScreenImage.jpg" archivePath="SplashScreenImage.jpg" lastWriteTime="11.05.2014 20:30:57" />
+  <file source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="17.06.2014 23:26:13" />
+  <file source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\Bin\Debug\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="11.05.2014 20:32:55" />
+  <file source="C:\Users\kruil_home\Dropbox\Grapital\Grapital\Grapital\Bin\Debug\Background.png" archivePath="Background.png" lastWriteTime="20.04.2014 23:44:01" />
 </xapCache>

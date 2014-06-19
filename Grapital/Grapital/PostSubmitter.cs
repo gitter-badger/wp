@@ -17,13 +17,14 @@ using System.Windows.Threading;
 
 namespace Grapital
 {
+    public delegate void MyDel(object sender);
+
     public class PostSubmitter
     {
         public string url { get; set; }
         public Dictionary<string, object> parameters { get; set; }
         string boundary = "----------" + DateTime.Now.Ticks.ToString();
 
-        public delegate void MyDel(object sender);
         public event MyDel uploaded;
 
         public PostSubmitter() { }
@@ -39,7 +40,7 @@ namespace Grapital
         }
 
 
-        protected virtual void RaiseSampleEvent()
+        protected virtual void RaiseUploaded()
         {
             if (uploaded != null) uploaded(this);
         }
@@ -51,23 +52,40 @@ namespace Grapital
             Stream postStream = request.EndGetRequestStream(asynchronousResult);
             writeMultipartObject(postStream, parameters);
             StreamReader myStreamReader = new StreamReader(postStream);
-            string a = myStreamReader.ReadToEnd();
-
-
             postStream.Close();
             request.BeginGetResponse(new AsyncCallback(GetResponseCallback), request);
         }
 
         private void GetResponseCallback(IAsyncResult asynchronousResult)
         {
-            HttpWebRequest request = (HttpWebRequest)asynchronousResult.AsyncState;
-            HttpWebResponse response = (HttpWebResponse)request.EndGetResponse(asynchronousResult);
-            Stream streamResponse = response.GetResponseStream();
-            StreamReader streamRead = new StreamReader(streamResponse);
-            streamResponse.Close();
-            streamRead.Close();
-            RaiseSampleEvent();
-            response.Close();         
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)asynchronousResult.AsyncState;
+                HttpWebResponse response = (HttpWebResponse)request.EndGetResponse(asynchronousResult);
+                Stream streamResponse = response.GetResponseStream();
+                StreamReader streamRead = new StreamReader(streamResponse);
+                string resp = streamRead.ReadToEnd();
+                if (resp == "error1")
+                {
+                    Deployment.Current.Dispatcher.BeginInvoke(() =>
+                    {
+                        MessageBox.Show(String.Format(MyResources.AskFriendVerify, (App.Current as App).settings["emailInvitation"]));
+                    }
+                    );
+                }
+                streamResponse.Close();
+                streamRead.Close();
+                RaiseUploaded();
+                response.Close();
+            }
+            catch
+            {
+                Deployment.Current.Dispatcher.BeginInvoke(() =>
+                    {
+                MessageBox.Show("Please check Internet connection."); RaiseUploaded();
+                    }
+                );
+            }
         }
 
 

@@ -1,0 +1,49 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Grapital.AddNewItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:star="clr-namespace:MarkHeath.StarRating;assembly=MarkHeath.StarRating"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="false">
+
+    <!--LayoutRoot представляет корневую сетку, где размещается все содержимое страницы-->
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Grapital;component/img/background.png" Stretch="None"/>
+        </Grid.Background>
+        <StackPanel>
+            <TextBlock Margin="12" FontSize="35" Text="{Binding Path=MyWrappedResources.NewItem, Source={StaticResource AnyGivenKey}}"/>
+            <Image Source="/Grapital;component/img/shadow.png" Stretch="Uniform" />
+            <Image x:Name="imgPhoto" Width="300" Source="/Grapital;component/img/AddImage.png" Height="300" Margin="10" Tap="imgPhoto_Tap" Stretch="Uniform" />
+            <Grid Margin="12,18,12,0">
+                <TextBlock Text="{Binding Path=MyWrappedResources.EnterDescription, Source={StaticResource AnyGivenKey}}" Opacity="0.5"/>
+                <TextBlock Name="tbRemain" Text="200" HorizontalAlignment="Right" Opacity="0.5"/>
+            </Grid>
+            <TextBox Height="140" x:Name="tbDescription" Text="" TextWrapping="Wrap"/>
+            <TextBlock x:Name="textBlockCondition" Text="Condition: New" Opacity="0.5" Margin="12,18,0,0"/>
+            <star:StarRatingControl Name="starControl" ManipulationCompleted="starControl_ManipulationCompleted" Margin="9,14,-16,14" Rating="4" HorizontalAlignment="Center" Width="260" Height="55" VerticalAlignment="Top" NumberOfStars="3" />
+            <Button Content="Publish" Width="280" x:Name="butSend" Click="butSend_Click"/>
+        </StackPanel>
+    </Grid>
+ 
+    <!--Пример кода, иллюстрирующий использование ApplicationBar-->
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Кнопка 1"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Кнопка 2"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="Элемент меню 1"/>
+                <shell:ApplicationBarMenuItem Text="Элемент меню 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
+</phone:PhoneApplicationPage>
